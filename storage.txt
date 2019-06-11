@@ -1,0 +1,2 @@
+attempt to store all inputs in local.storage
+add a clear button (user can manually clear storage).
