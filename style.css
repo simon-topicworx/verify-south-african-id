@@ -13,5 +13,7 @@ input:focus,select:focus,textarea:focus,button:focus {outline: none;}
 .bg-dark {background: #333;color: #fff;}
 .msg {color: red; font-size: small;}
 .invalid-id {color: red; font-size: x-small;}
-.github {padding: 15px 5px;}
+.github {display: inline-block;padding: 15px 5px;}
 .github a {text-decoration: none;color: blue;}
+.clear {display: inline-block;float: right;padding: 15px 5px;}
+.clear button {text-decoration: none;border: none;background-color: #fff;color: red;font-size: unset;cursor: pointer;}
