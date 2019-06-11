@@ -4,8 +4,8 @@ ul {list-style: none;}
 ul li {padding: 5px;background: #f4f4f4;margin: 5px 0;text-align: center;}
 header {background: #f4f4f4;padding: 1rem;text-align: center;}
 input:focus,select:focus,textarea:focus,button:focus {outline: none;}
-.container {margin: auto;width: 500px;overflow: auto;padding: 3rem 2rem;}
-#my-form {padding: 2rem;background: #f4f4f4;}
+.container {margin: auto;width:100%;max-width: 500px;overflow: auto;padding: 3rem 2rem;}
+#my-form {padding: 2rem;background: #f4f4f4;align-items: stretch;}
 #my-form label {display: block;}
 #my-form input[type='text'] {width: 100%;padding: 8px;margin-bottom: 10px;border-radius: 5px;border: 1px solid #ccc;}
 .btn {display: block;width: 100%;padding: 10px 15px;border: 0;background: #333;color: #fff;border-radius: 5px;margin: 5px 0;}
@@ -13,3 +13,5 @@ input:focus,select:focus,textarea:focus,button:focus {outline: none;}
 .bg-dark {background: #333;color: #fff;}
 .msg {color: red; font-size: small;}
 .invalid-id {color: red; font-size: x-small;}
+.github {padding: 15px 5px;}
+.github a {text-decoration: none;color: blue;}

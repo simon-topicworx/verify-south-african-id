@@ -7,6 +7,7 @@ const userList = document.querySelector('#users');
 idInput.addEventListener('input', checkId);
 myForm.addEventListener('submit', onSubmit);
 
+// Event listener for input in ID text field. Displays green when true.
 function checkId(e) {
     e.preventDefault();
     const ID = verify_id(idInput.value);
@@ -56,6 +57,7 @@ function verify_id(num) {
     return {Valid:num[num.length - 1] === String(step6),Gender:gender,Citizen:citizenship,BirthDate:DoB};
 }
 
+// Event listener on submit. checks id valid then returns values as li element.
 function onSubmit(e) {
     e.preventDefault();
     const ID = verify_id(idInput.value);
