@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Website</h1>
+</header>
+
+<section class="container">
+    <form id="my-form" autocomplete="off">
+        <h1>Form Submission</h1>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+        </div>
+        <div>
+            <label for="verify_id">South African ID:</label>
+            <input type="text" id="verify_id">
+            <div class="invalid-id"></div>
+        </div>
+        <input class="btn" type="submit" value="Submit">
+        <div class="msg"></div>
+    </form>
+
+    <ul id="users"></ul>
+
+</section>
+
+
+<script src="main.js"></script>
+</body>
+</html>
