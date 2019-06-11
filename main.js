@@ -1,7 +1,5 @@
 const idInput = document.querySelector('#verify_id');
 const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
 const msgId = document.querySelector('.invalid-id');
 const userList = document.querySelector('#users');
@@ -61,7 +59,7 @@ function verify_id(num) {
 function onSubmit(e) {
     e.preventDefault();
     const ID = verify_id(idInput.value);
-    if (!ID.Valid || nameInput.value === '' || emailInput.value === '') {
+    if (!ID.Valid) {
         msg.innerHTML = 'Please enter all fields';
         setTimeout(function () {
             msg.innerHTML = '';
@@ -69,11 +67,9 @@ function onSubmit(e) {
         //setTimeout(() => msg.innerHTML = '', 3000); //uses pointer function
     } else {
         const li = document.createElement('li');
-        li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value} : ${idInput.value} : ${ID.Gender} : ${ID.Citizen} : ${ID.BirthDate}`));
+        li.appendChild(document.createTextNode(`${idInput.value} : ${ID.Gender} : ${ID.Citizen} : ${ID.BirthDate}`));
         userList.appendChild(li);
         //Clear fields
-        nameInput.value = '';
-        emailInput.value = '';
         idInput.value = '';
     }
 }
