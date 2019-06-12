@@ -29,7 +29,7 @@ function checkId(e) {
 // Verifies the South African ID number: returns{Valid,Gender,Citizen,BirthDate} BirthDate(dd-mm-yyyy)
 function verify_id(num) {
     //Equation to verify.
-    if (isNaN(num) || num === '' || num.length !== 13) {
+    if (isNaN(num) || num === '' || num.length !== 13 || num[3] === '0' || num[5] === '0') {
         return false;
     }
     let step1 = 0;
@@ -62,17 +62,17 @@ function verify_id(num) {
     
     //Condition for year (19xx or 20xx)
     const current_year = new Date().getFullYear();
-    let id_year = tempDate.getFullYear();
     const current_first = String(current_year).substring(0, 2);
     const current_last = String(current_year).substring(2, 4);
-    const id_year_last = String(id_year).substring(2, 4);
-    if (id_year_last<=current_last) {
-        let id_year = "20" + id_year_last;
+    const id_year = String(tempDate.getFullYear()).substring(2, 4);
+
+    if (parseInt(id_year) < parseInt(current_last)) {
+        var prefix = current_first;
     } else {
-        let id_year = "19" + id_year_last;
+        var prefix = String(parseInt(current_first)-1);
     }
     
-    const DoB = id_date + "-" + (id_month + 1) + "-" + id_year;
+    const DoB = id_date + "-" + (id_month + 1) + "-" + prefix + id_year;
     //Valid: returns true
     return {Valid:num[num.length - 1] === String(step6),Gender:gender,Citizen:citizenship,BirthDate:DoB};
 }
