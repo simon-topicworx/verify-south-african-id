@@ -28,6 +28,7 @@ function checkId(e) {
 
 // Verifies the South African ID number: returns{Valid,Gender,Citizen,BirthDate} BirthDate(dd-mm-yyyy)
 function verify_id(num) {
+    //Equation to verify.
     if (isNaN(num) || num === '' || num.length !== 13) {
         return false;
     }
@@ -50,25 +51,30 @@ function verify_id(num) {
     }
     const step5 = String(step1+step4);
     const step6 = 10-parseInt(step5[step5.length-1]);
-
+    
+    //Gender & Citizenship
     const gender = (parseInt(num.substring(6, 10)) < 5000) ? "Female" : "Male";
     const citizenship = (parseInt(num.substring(10, 11)) === 0) ? "SA Citizen" : "Permanent Residence";
-
+    //Date of Birth
     const tempDate = new Date(num.substring(0, 2), num.substring(2, 4) - 1, num.substring(4, 6));
     const id_date = tempDate.getDate();
     const id_month = tempDate.getMonth();
-    const id_year = tempDate.getFullYear();
+    
+    //Condition for year (19xx or 20xx)
+    const current_year = new Date().getFullYear();
+    let id_year = tempDate.getFullYear();
+    const current_first = String(current_year).substring(0, 2);
+    const current_last = String(current_year).substring(2, 4);
+    const id_year_last = String(id_year).substring(2, 4);
+    if (id_year_last<=current_last) {
+        let id_year = "20" + id_year_last;
+    } else {
+        let id_year = "19" + id_year_last;
+    }
+    
     const DoB = id_date + "-" + (id_month + 1) + "-" + id_year;
-    //Valid returns true
+    //Valid: returns true
     return {Valid:num[num.length - 1] === String(step6),Gender:gender,Citizen:citizenship,BirthDate:DoB};
-}
-
-
-// Function to create a li element.
-const liMaker = text => {
-  const li = document.createElement('li')
-  li.textContent = text
-  userList.appendChild(li)
 }
 
 // Event listener on submit. checks id valid then returns values as li element.
@@ -80,15 +86,7 @@ function onSubmit(e) {
         setTimeout(function () {
             msg.innerHTML = '';
         },3000);
-        //setTimeout(() => msg.innerHTML = '', 3000); //uses pointer function
     } else {
-        //**OLD CODE**
-        //const li = document.createElement('li');
-        //li.appendChild(document.createTextNode(`${idInput.value} : ${ID.Gender} : ${ID.Citizen} : ${ID.BirthDate}`));
-        //userList.appendChild(li);
-        //Clear fields
-        //idInput.value = '';
-        
         //Adds data to an array and creates a li item.
         itemsArray.push(`${idInput.value} : ${ID.Gender} : ${ID.Citizen} : ${ID.BirthDate}`);
         localStorage.setItem('items', JSON.stringify(itemsArray));
@@ -96,6 +94,13 @@ function onSubmit(e) {
         ID = '';
         idInput.value = '';
     }
+}
+
+// Function to create a li element.
+const liMaker = text => {
+  const li = document.createElement('li')
+  li.textContent = text
+  userList.appendChild(li)
 }
 
 // Creates li for each submit
