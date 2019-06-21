@@ -1,6 +1,0 @@
-attempt to store all inputs in local.storage
-add a clear button (user can manually clear storage).
-
-Exeptions to fix:
-0000000005678 outputs valid. month and day != 0. --Done
-0004057563084 outputs 1900 instead of 2000 --Done
